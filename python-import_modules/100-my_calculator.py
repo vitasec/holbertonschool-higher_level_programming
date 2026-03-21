@@ -23,6 +23,7 @@ if __name__ == "__main__":
     elif operator == '/':
         result = div(a, b)
     else:
+        # Yanlis operator xetasi
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
