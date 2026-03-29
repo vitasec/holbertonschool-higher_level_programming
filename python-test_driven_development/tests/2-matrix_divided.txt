@@ -15,7 +15,7 @@ Missing all arguments:
     >>> matrix_divided()
     Traceback (most recent call last):
         ...
-    TypeError: matrix_divided() missing 2 required positional argument: 'matrix' and 'div'
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
 Div is a string (bu checker-in ilk xətası idi):
     >>> matrix_divided([[1, 2]], "3")
