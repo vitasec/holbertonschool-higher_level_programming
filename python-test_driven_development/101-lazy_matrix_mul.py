@@ -26,9 +26,16 @@ def lazy_matrix_mul(m_a, m_b):
         return np.matmul(m_a, m_b)
     except ValueError as e:
         err_msg = str(e)
-        # 3. Əgər yeni NumPy ölçü xətası verərsə ("gufunc signature")...
+        # 3. Ölçü xətası (gufunc) olduqda köhnə formata (np.dot) qaytarırıq
         if "gufunc signature" in err_msg or "mismatch" in err_msg:
-            # np.dot() istifadə ed
-            np.dot(m_a, m_b)
-        # Digər bütün xətaları olduğu kimi qaytarırıq (məsələn, "jagged list")
+            try:
+                np.dot(m_a, m_b)
+            except ValueError as dot_e:
+                raise ValueError(str(dot_e))
+        raise e
+    except TypeError as e:
+        err_msg = str(e)
+        # 4. Daxili elementlərin
+        if "ufunc 'matmul' did not contain a loop" in err_msg:
+            raise TypeError("invalid data type for einsum")
         raise e
