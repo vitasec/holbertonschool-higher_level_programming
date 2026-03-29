@@ -9,8 +9,6 @@ import numpy as np
 def lazy_matrix_mul(m_a, m_b):
     """
     NumPy istifadə edərək iki matrisi vurur.
-    Əvvəlcə daxil olan məlumatları NumPy array-inə çeviririk ki, 
-    kənar hallarda (edge cases) standart riyazi xətalar qaytarsın.
 
     Arqumentlər:
         m_a (list of lists): Birinci matris
@@ -19,4 +17,4 @@ def lazy_matrix_mul(m_a, m_b):
     Qaytarır:
         NumPy ndarray: Matrislərin hasili
     """
-    return np.matmul(np.array(m_a), np.array(m_b))
+    return np.matmul(m_a, m_b)
