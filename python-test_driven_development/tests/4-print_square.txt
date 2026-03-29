@@ -35,3 +35,8 @@ Size is a float (negative):
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer
+Missing argument:
+    >>> print_square()
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
