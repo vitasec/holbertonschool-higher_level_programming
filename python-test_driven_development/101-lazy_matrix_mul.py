@@ -32,10 +32,13 @@ def lazy_matrix_mul(m_a, m_b):
                 np.dot(m_a, m_b)
             except ValueError as dot_e:
                 raise ValueError(str(dot_e))
+        # 4. Qeyri-həmcins (jagged) matris xətasını qısaldırıq
+        if "setting an array element with a sequence" in err_msg:
+            raise ValueError("setting an array element with a sequence.")
         raise e
     except TypeError as e:
         err_msg = str(e)
-        # 4. Daxili elementlərin
+        # 5. Daxili elementlərin ti
         if "ufunc 'matmul' did not contain a loop" in err_msg:
             raise TypeError("invalid data type for einsum")
         raise e
