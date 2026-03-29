@@ -39,12 +39,16 @@ def lazy_matrix_mul(m_a, m_b):
         err_msg = str(e)
         # 4. Daxili elementlərin tipi səhv olduqda
         if "ufunc 'matmul' did not contain a loop" in err_msg:
-            # Əgər ölçülər vurulmaq üçün UYĞUN DEYİLSƏ
+            # Ölçülərin uyğun olub-olmadığını yoxlayırıq
+            is_mismatched = False
             try:
                 if len(m_a[0]) != len(m_b):
-                    raise TypeError("invalid type promotion")
+                    is_mismatched = True
             except Exception:
                 pass
+            # Əgər ölçülər uyğun deyilsə (və tip səhvidirsə)
+            if is_mismatched:
+                raise TypeError("invalid type promotion")
             # Əgər ölçülər uyğundursa, amma tip səhvidirsə
             raise TypeError("invalid data type for einsum")
         raise e
