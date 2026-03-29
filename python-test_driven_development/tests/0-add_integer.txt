@@ -1,16 +1,27 @@
-Handling Infinity:
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Sən bu hissəni unutmusan (mütləqdir):
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+İndi isə digər testləri ardıcıl yaza bilərsən:
+
+    >>> add_integer(1, 2)
+    3
+
     >>> add_integer(float('inf'))
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
 
-Handling NaN:
     >>> add_integer(float('nan'), 4)
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
 
-Handling Infinity for b:
     >>> add_integer(1, float('-inf'))
     Traceback (most recent call last):
         ...
