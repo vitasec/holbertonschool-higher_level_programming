@@ -1,33 +1,17 @@
-The ``0-add_integer`` module
-============================
-
-Using ``add_integer``
----------------------
-
-Import the function:
-    >>> add_integer = __import__('0-add_integer').add_integer
-
-Normal integers:
-    >>> add_integer(1, 2)
-    3
-
-Floats get casted to integers:
-    >>> add_integer(100.3, -2)
-    98
-
-Only one argument (b defaults to 98):
-    >>> add_integer(2)
-    100
-
-Error handling for strings:
-    >>> add_integer(4, "School")
-    Traceback (most recent call last):
-        ...
-    TypeError: b must be an integer
-
-Error handling for None:
-    >>> add_integer(None)
+Handling Infinity:
+    >>> add_integer(float('inf'))
     Traceback (most recent call last):
         ...
     TypeError: a must be an integer
-    
+
+Handling NaN:
+    >>> add_integer(float('nan'), 4)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Handling Infinity for b:
+    >>> add_integer(1, float('-inf'))
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
