@@ -30,7 +30,6 @@ Text with lots of spaces at the beginning and end:
     >>> text_indentation("   Holberton School.   ")
     Holberton School.
     <BLANKLINE>
-    <BLANKLINE>
 
 Text without any of the specific punctuations:
     >>> text_indentation("This is just a regular text without punctuation")
