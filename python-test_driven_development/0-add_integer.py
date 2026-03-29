@@ -15,7 +15,7 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
 
     # 2. Dəyər yoxlanışı (NaN və Infinity üçün)
-    # NaN özünə bərabər deyil (a != a). 
+    # NaN özünə bərabər deyil (a != a).
     # Infinity isə mütləq dəyərinə görə sonsuzdur.
     if a != a or abs(a) == float('inf'):
         raise TypeError("a must be an integer")
