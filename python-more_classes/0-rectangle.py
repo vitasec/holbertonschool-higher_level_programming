@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-Bu modul boş bir Rectangle sinfini təyin edir.
+Bu Rectangle
 """
 
 
 class Rectangle:
     """
-    Düzbucaqlı (Rectangle) obyektləri yaratmaq üçün boş sinif.
+    Düzbucaqlı boş sinif.
     """
     pass
