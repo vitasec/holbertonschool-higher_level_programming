@@ -5,11 +5,11 @@ Using ``BaseGeometry``:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
     >>> bg = BaseGeometry()
 
-Valid integers:
+Validating integers:
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
 
-Invalid type (not an integer):
+Invalid type - not an integer:
     >>> bg.integer_validator("name", "John")
     Traceback (most recent call last):
     ...
@@ -25,7 +25,7 @@ Invalid type (not an integer):
     ...
     TypeError: is_active must be an integer
 
-Invalid value (less than or equal to 0):
+Invalid value - less than or equal to 0:
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
     ...
