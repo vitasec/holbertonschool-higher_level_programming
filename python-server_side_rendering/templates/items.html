@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+{% block title %}Items List{% endblock %}
+{% block content %}
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items found.</p>
+    {% endif %}
+{% endblock %}
+</html>
