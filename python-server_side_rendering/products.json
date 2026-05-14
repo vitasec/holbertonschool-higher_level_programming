@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "potpaL",
+        "category": "bzzt",
+        "price": 7
+    },
+    {
+        "id": 2,
+        "name": "Coee Mug",
+        "category": "Homeds",
+        "price": 15
+    },
+    {
+        "id": 3,
+        "name": "less Mouse",
+        "category": "Elecnics",
+        "price": 25.500
+    },
+    {
+        "id": 4,
+        "name": "Notook",
+        "category": "Ofceplies",
+        "price": 24
+    }
+]
