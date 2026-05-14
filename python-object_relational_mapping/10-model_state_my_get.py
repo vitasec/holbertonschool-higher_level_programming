@@ -1,26 +1,38 @@
 #!/usr/bin/python3
-# script that lists all State objects from the database hbtn_0e_6_usa
-# # Sintax: ./10-model_state_my_get.py username password database_name
-# state_name_to_search
-# Used module sqlalchemy
-
-import sys
+"""
+Module for fetching all states containing letter 'a'.
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import State
+from sys import argv
 
+from model_state import Base, State
+
+# Run only executed
 if __name__ == "__main__":
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
+
+    # Engine creation with mysql and mysqldb DBAPI
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
+                           .format(argv[1], argv[2], argv[3]))
+
+    # Creating all classes in DB
+    Base.metadata.create_all(engine)
+
+    # Creating Session and its instance
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    found = False
-    for state in session.query(State):
-        if state.name == sys.argv[4]:
-            print("{}".format(state.id))
-            found = True
-            break
-    if found is False:
+    # The Query
+    state = (session.query(State)
+             .filter(State.name == argv[4])
+             .first())
+
+    # Printing the result
+    if state is None:
         print("Not found")
+    else:
+        print(state.id)
+
+    # Closing the session
+    if session:
+        session.close()
