@@ -1,14 +1,29 @@
 #!/usr/bin/python3
-# script that takes in the name of a state as an argument and lists
-# all cities of that state.
-# Sintax: ./5-filter_cities.py username password database_name
-import sys
-import MySQLdb
+"""Module for Selecting cities"""
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-    c = db.cursor()
-    c.execute("SELECT * FROM cities as c \
-               INNER JOIN states as s ON c.state_id = s.id \
-               ORDER BY c.id")
-    print(", ".join([ct[2] for ct in c.fetchall() if ct[4] == sys.argv[4]]))
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb
+
+    db = MySQLdb.connect(
+        user=argv[1],
+        password=argv[2],
+        database=argv[3]
+    )
+    cursor = db.cursor()
+
+    cursor.execute('SELECT c.name, s.name \
+                    FROM cities AS c \
+                    INNER JOIN states AS s ON s.id = c.state_id ')
+
+    cities = []
+    for city in cursor.fetchall():
+        if city[1] == argv[4]:
+            cities.append(city[0])
+
+    print(", ".join(cities))
+
+    if cursor:
+        cursor.close()
+    if db:
+        db.close()
