@@ -1,11 +1,27 @@
 #!/usr/bin/python3
-# an SQL injection to delete all records of a table…
-# Sintax: ./3-select_states.py username password database_name 'state'
-import sys
-import MySQLdb
+"""Module for Selecting states where name equals argument(safe)"""
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-    c = db.cursor()
-    c.execute("SELECT * FROM states")
-    [print(state) for state in c.fetchall() if state[1] == sys.argv[4]]
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb
+
+    db = MySQLdb.connect(
+        user=argv[1],
+        password=argv[2],
+        database=argv[3]
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT * \
+                    FROM `states` \
+                    ORDER BY id")
+
+    for state in cursor.fetchall():
+        if state[1] == argv[4]:
+            print(state)
+
+    if cursor:
+        cursor.close()
+    if db:
+        db.close()
